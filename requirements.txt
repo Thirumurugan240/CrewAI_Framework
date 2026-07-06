@@ -1,0 +1,60 @@
+# CrewAI Framework dependencies
+# Install with:  pip install -r requirements.txt
+
+# Core CrewAI framework + ready-made tools (web search, file readers, etc.)
+crewai
+crewai-tools
+
+# Reads your API keys from the .env file
+python-dotenv
+
+# For the MCP notebooks (24 and 25) - Model Context Protocol support
+# (lets agents connect to MCP servers, including ready-made ones from Docker)
+crewai-tools[mcp]
+mcpadapt
+
+# For the serverless FAISS vector database notebook (19) - free, local
+faiss-cpu
+langchain-community
+langchain-huggingface
+sentence-transformers
+
+# ----------------------------------------------------------------------
+# API KEYS: put these in a .env file next to your notebooks
+#   OPENAI_API_KEY=your-openai-key          (main brain - required)
+#   SERPER_API_KEY=your-serper-key          (only for web search - notebook 14)
+#
+# OPTIONAL other brains (notebook 05) - only if you use them:
+#   GEMINI_API_KEY=...      # Google Gemini
+#   ANTHROPIC_API_KEY=...   # Claude
+#   Ollama needs no key - install from https://ollama.com and run: ollama pull llama3
+# ----------------------------------------------------------------------
+#
+# DOCKER (only for notebook 25 - ready-made Playwright MCP):
+#   Install Docker Desktop, open the MCP Toolkit, and enable "Playwright".
+#   Keep Docker Desktop running when you execute playwright_mcp_demo.py.
+# ----------------------------------------------------------------------
+#
+# ======================================================================
+# MCP FILES - what each one needs to run
+# ----------------------------------------------------------------------
+# Notebooks 24 and 25 only EXPLAIN the concept (nothing to run inside them).
+# The real MCP code lives in these .py files - run them in a terminal:
+#
+#   mcp_math_server.py     A tiny custom MCP server (one tool: add).
+#                          You do not run this directly - mcp_agent_demo.py
+#                          starts it for you.
+#                          Needs:  pip install "crewai-tools[mcp]"
+#
+#   mcp_agent_demo.py      Agent + our own MCP server.
+#                          Run:    python mcp_agent_demo.py
+#                          Needs:  pip install "crewai-tools[mcp]"
+#                                  OPENAI_API_KEY in .env
+#
+#   playwright_mcp_demo.py Agent + ready-made Playwright MCP (a web browser).
+#                          Run:    python playwright_mcp_demo.py
+#                          Needs:  pip install "crewai-tools[mcp]"
+#                                  OPENAI_API_KEY in .env
+#                                  Docker Desktop running + Playwright enabled
+#                                  in the MCP Toolkit
+# ======================================================================
